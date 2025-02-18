@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Floating Navbar for Chat */
+        .chat-navbar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* Hidden Chat Window */
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            height: 500px;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+        }
+
+        .chat-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .chat-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to Our Pharmacy</h1>
+    </header>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="history.html">History</a>
+    </nav>
+
+    <!-- Medicine Grid -->
+    <div class="container">
+        <div class="medicine-grid">
+            <div class="medicine-card">
+                <img src="images/medicine1.png" alt="Medicine 1">
+                <h3>Paracetamol</h3>
+                <p>Relieves pain and fever.</p>
+                <p>Price: ₹150</p>
+                <button onclick="bookMedicine('Paracetamol')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine2.png" alt="Medicine 2">
+                <h3>Benadryl</h3>
+                <p>treats the symptoms of allergies and allergic reactions.</p>
+                <p>Price: ₹560</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine4.jfif" alt="Medicine 4">
+                <h3>Antacid</h3>
+                <p>help to treat heartburn (indigestion).</p>
+                <p>Price: ₹550</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine3.jpeg" alt="Medicine 3">
+                <h3>Cofsils</h3>
+                <p>medicate the mouth and throat for the slow administration in digestion or cough remedies.</p>
+                <p>Price: ₹300</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine5.png" alt="Medicine 5">
+                <h3>Ibuprofen</h3>
+                <p>Reduces inflammation and pain.</p>
+                <p>Price: ₹240</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine6.png" alt="Medicine 6">
+                <h3>Cetirizine</h3>
+                <p>Give temporarily relieve the symptoms of hay fever .</p>
+                <p>Price: ₹230</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine7.jpg" alt="Medicine 7">
+                <h3>Dolo 650</h3>
+                <p>treat headaches, migraine, toothaches, sore throats, period (menstrual) pains, arthritis, muscle aches, and the common cold.</p>
+                <p>Price: ₹430</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine8.webp" alt="Medicine 8">
+                <h3>Domperidone</h3>
+                <p> helps you to stop feeling or being sick (nausea or vomiting).</p>
+                <p>Price: ₹250</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine9.png" alt="Medicine 9">
+                <h3>Asprine</h3>
+                <p>Reduces inflammation and pain.</p>
+                <p>Price: ₹300</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine10.png" alt="Medicine 10">
+                <h3>Ventolin HFA</h3>
+                <p>prevent bronchospasm in people aged 4 years and older with reversible obstructive airway disease.</p>
+                <p>Price: ₹150</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine11.png" alt="Medicine 11">
+                <h3>Hydrocortisone</h3>
+                <p>treat a number of different conditions, such as inflammation (swelling), severe allergies, adrenal problems.</p>
+                <p>Price: ₹180</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine12.webp" alt="Medicine 12">
+                <h3>Meclizine</h3>
+                <p>prevent and control nausea, vomiting, and dizziness caused by motion sickness.</p>
+                <p>Price: ₹240</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine13.jfif" alt="Medicine 13">
+                <h3>Naproxen</h3>
+                <p>reduce fever and to relieve mild pain from headaches, muscle aches, arthritis, menstrual periods, the common cold, toothaches, and backaches.</p>
+                <p>Price: ₹300</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine14.jfif" alt="Medicine 14">
+                <h3>Diclofenac</h3>
+                <p>treat mild-to-moderate pain, and helps to relieve symptoms of arthritis (eg, osteoarthritis or rheumatoid arthritis), such as inflammation, swelling, stiffness, and joint pain.</p>
+                <p>Price: ₹400</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine15.png" alt="Medicine 15">
+                <h3>Energy Booster</h3>
+                <p>Energy boosters include sleep, exercise, limiting alcohol, stress management, and certain foods and supplements. .</p>
+                <p>Price: ₹300</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine16.webp" alt="Medicine 16">
+                <h3>Zinc Supplements</h3>
+                <p>Zinc supplements may help with a number of health concerns, including immunity, blood sugar, and skin health.</p>
+                <p>Price: ₹150</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine17.png" alt="Medicine 17">
+                <h3>Antibiotic Ear Drops</h3>
+                <p>treatment of infections of the external ear, such as swimmer's ear, and relief of associated earaches.</p>
+                <p>Price: ₹220</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+            <div class="medicine-card">
+                <img src="images/medicine18.png" alt="Medicine 18">
+                <h3>Dulcolax</h3>
+                <p>short-term relief of occasional constipation.</p>
+                <p>Price: ₹320</p>
+                <button onclick="bookMedicine('Ibuprofen')">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Navbar for Chat -->
+    <div class="chat-navbar" onclick="toggleChat()">Asana Assistant</div>
+
+    <!-- Chat Window -->
+    <div class="chat-container" id="chatWindow">
+        <div class="chat-header" onclick="toggleChat()">Asana Assistant (Click to Close)</div>
+        <iframe class="chat-iframe" src="https://asana-assistant.onrender.com" title="Pharmacy Chatbot"></iframe>
+    </div>
+
+    <script>
+        function bookMedicine(medicineName) {
+            let history = JSON.parse(localStorage.getItem('medicineHistory')) || [];
+            history.push({ name: medicineName, date: new Date().toLocaleString() });
+            localStorage.setItem('medicineHistory', JSON.stringify(history));
+            alert(`${medicineName} has been booked!`);
+        }
+
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+                chatWindow.style.display = 'flex';
+            } else {
+                chatWindow.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

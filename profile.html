@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy - Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+
+    <!-- Header -->
+    <header>
+        <h1>User Profile</h1>
+    </header>
+
+ <!-- Navbar -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="history.html">History</a>
+    </nav>
+
+    <!-- Profile Form -->
+    <div class="container">
+        <form id="profileForm" class="profile-form">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="address" placeholder="Address" required>
+            <input type="number" id="age" placeholder="Age" required>
+            <input type="text" id="contact" placeholder="Contact" required>
+            <button type="submit">Save</button>
+            <button type="button" onclick="deleteProfile()">Delete</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <!-- <footer>
+        <p>&copy; 2023 Pharmacy. All rights reserved.</p>
+    </footer> -->
+
+    <script>
+        // Load saved profile data
+        const profileForm = document.getElementById('profileForm');
+        const savedProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
+
+        document.getElementById('name').value = savedProfile.name || '';
+        document.getElementById('address').value = savedProfile.address || '';
+        document.getElementById('age').value = savedProfile.age || '';
+        document.getElementById('contact').value = savedProfile.contact || '';
+
+        // Save profile data
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const profile = {
+                name: document.getElementById('name').value,
+                address: document.getElementById('address').value,
+                age: document.getElementById('age').value,
+                contact: document.getElementById('contact').value
+            };
+            localStorage.setItem('userProfile', JSON.stringify(profile));
+            alert('Profile saved!');
+        });
+
+        // Delete profile data
+        function deleteProfile() {
+            localStorage.removeItem('userProfile');
+            profileForm.reset();
+            alert('Profile deleted!');
+        }
+    </script>
+</body>
+</html>
